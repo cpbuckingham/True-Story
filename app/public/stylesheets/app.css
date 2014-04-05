@@ -1,0 +1,32 @@
+body {
+  font: 24px Helvetica;
+}
+
+header {
+  display: block;
+  min-height: 30px;
+  background: #6b7686;
+  color: #efefef;
+  padding: .5em;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.content-wrap {
+  margin: 0px;
+  padding: 0px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  flex-flow: row;
+}
+
+.content {
+  margin: 4px;
+  padding: 5px;
+  -webkit-flex: 3 3 100%;
+  flex: 3 3 100%;
+  -webkit-order: 0;
+  order: 0;
+  background: beige;
+}
