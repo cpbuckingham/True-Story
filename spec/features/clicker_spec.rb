@@ -2,7 +2,12 @@ require 'spec_helper'
 
 feature "Tracking student responses" do
 
-  scenario "Instructor sets up lesson and students click" do
+  background do
+    DB[:sessions].delete
+    ClickerApp.sessions_repository = SessionRepository.new(DB)
+  end
+
+  scenario "Instructor sees how many students are in the class" do
     instructor_session = Capybara::Session.new(:rack_test, ClickerApp)
     student_session = Capybara::Session.new(:rack_test, ClickerApp)
 
@@ -14,6 +19,16 @@ feature "Tracking student responses" do
     student_session.visit "/"
     student_session.click_on "I'm a Student"
     expect(student_session).to have_content("Welcome, grasshopper!")
+
+    instructor_session.visit instructor_session.current_path
+    expect(instructor_session).to have_content("1 Student")
+
+    other_student_session = Capybara::Session.new(:rack_test, ClickerApp)
+    other_student_session.visit "/"
+    other_student_session.click_on "I'm a Student"
+
+    instructor_session.visit instructor_session.current_path
+    expect(instructor_session).to have_content("2 Students")
   end
 
 end

@@ -2,14 +2,18 @@ body {
   font: 24px Helvetica;
 }
 
-header {
+.header {
   display: block;
   min-height: 30px;
   background: #6b7686;
-  color: #efefef;
   padding: .5em;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.logo {
+  color: #efefef;
+  text-decoration: none;
 }
 
 .content-wrap {
@@ -29,4 +33,20 @@ header {
   -webkit-order: 0;
   order: 0;
   background: beige;
+}
+
+.button {
+  display: block;
+  text-align: center;
+  margin: 1em auto;
+  width: 10em;
+  color: #efefef;
+  background: black;
+  text-decoration: none;
+  padding: .5em;
+}
+
+.button:hover {
+  background: #999;
+  color: black;
 }
