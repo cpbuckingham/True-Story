@@ -18,6 +18,9 @@ InstructorApp = {
           case 'behind':
             className = 'is-behind';
             break;
+          case 'caught-up':
+            className = 'is-caught-up';
+            break;
         }
         var $div = $('<div class="student-circle"></div>');
         $div.addClass(className);

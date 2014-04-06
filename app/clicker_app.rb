@@ -41,6 +41,12 @@ class ClickerApp < Sinatra::Application
     ''
   end
 
+  post "/student/caught-up" do
+    session[:uuid] = SecureRandom.uuid unless session[:uuid]
+    sessions_repository.save(session[:uuid], status: 'caught-up')
+    ''
+  end
+
   private
 
   def sessions_repository

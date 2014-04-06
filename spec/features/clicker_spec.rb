@@ -32,6 +32,9 @@ feature "Tracking student responses" do
 
     other_student_session.click_on "You lost me"
     expect(instructor_session).to have_css(".student-circle.is-behind")
+
+    student_session.click_on "I'm caught-up"
+    expect(instructor_session).to have_css(".student-circle.is-caught-up")
   end
 
 end
