@@ -20,8 +20,7 @@ class ClickerApp < Sinatra::Application
   end
 
   get "/instructor" do
-    active_sessions = sessions_repository.active_sessions
-    haml :instructor, locals: { active_sessions: active_sessions.count }
+    haml :instructor
   end
 
   get '/instructor.json' do
