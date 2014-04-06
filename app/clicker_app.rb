@@ -1,7 +1,13 @@
 require 'sinatra/base'
 require_relative '../lib/session_repository'
+require 'sinatra/content_for'
+require "sinatra/json"
+require "haml"
 
 class ClickerApp < Sinatra::Application
+
+  helpers Sinatra::ContentFor
+  helpers Sinatra::JSON
 
   class << self
     attr_accessor :sessions_repository
@@ -16,6 +22,11 @@ class ClickerApp < Sinatra::Application
   get "/instructor" do
     active_sessions = sessions_repository.active_sessions
     haml :instructor, locals: { active_sessions: active_sessions.count }
+  end
+
+  get '/instructor.json' do
+    active_sessions = sessions_repository.active_sessions
+    json active_sessions.map { |session| { id: session[:uuid], status: session[:status] } }
   end
 
   get "/student" do

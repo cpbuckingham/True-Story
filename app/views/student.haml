@@ -1,1 +1,7 @@
 %h1 Welcome, grasshopper!
+
+- content_for :javascripts do
+  :javascript
+    $(function(){
+      StudentApp.setup();
+    });

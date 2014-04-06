@@ -32,7 +32,6 @@ body {
   flex: 3 3 100%;
   -webkit-order: 0;
   order: 0;
-  background: beige;
 }
 
 .button {
@@ -49,4 +48,25 @@ body {
 .button:hover {
   background: #999;
   color: black;
+}
+
+.student-circle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.student-circle.is-connected {
+  background: #6b7686;
+}
+
+.student-index {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 16px;
+  color: white;
 }

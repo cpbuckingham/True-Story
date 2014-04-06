@@ -8,8 +8,9 @@ feature "Tracking student responses" do
   end
 
   scenario "Instructor sees how many students are in the class" do
-    instructor_session = Capybara::Session.new(:rack_test, ClickerApp)
-    student_session = Capybara::Session.new(:rack_test, ClickerApp)
+    instructor_session = Capybara::Session.new(:selenium, ClickerApp)
+    student_session = Capybara::Session.new(:selenium, ClickerApp)
+    other_student_session = Capybara::Session.new(:selenium, ClickerApp)
 
     instructor_session.visit "/"
     instructor_session.click_on "I'm an Instructor"
@@ -21,14 +22,13 @@ feature "Tracking student responses" do
     expect(student_session).to have_content("Welcome, grasshopper!")
 
     instructor_session.visit instructor_session.current_path
-    expect(instructor_session).to have_content("1 Student")
+    expect(instructor_session).to have_content("1")
 
-    other_student_session = Capybara::Session.new(:rack_test, ClickerApp)
     other_student_session.visit "/"
     other_student_session.click_on "I'm a Student"
 
     instructor_session.visit instructor_session.current_path
-    expect(instructor_session).to have_content("2 Students")
+    expect(instructor_session).to have_content("2")
   end
 
 end
