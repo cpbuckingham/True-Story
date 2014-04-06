@@ -35,19 +35,21 @@ class ClickerApp < Sinatra::Application
 
   get "/student" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
-    sessions_repository.save(session[:uuid])
-    haml :student
+    sessions_repository.touch(session[:uuid])
+    haml :student, locals: { status: sessions_repository.find(session[:uuid])[:status] }
   end
 
   post "/student/you-lost-me" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
-    sessions_repository.save(session[:uuid], status: 'behind')
+    sessions_repository.touch(session[:uuid])
+    sessions_repository.update(session[:uuid], status: SessionRepository::BEHIND)
     ''
   end
 
   post "/student/caught-up" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
-    sessions_repository.save(session[:uuid], status: 'caught-up')
+    sessions_repository.touch(session[:uuid])
+    sessions_repository.update(session[:uuid], status: SessionRepository::CAUGHT_UP)
     ''
   end
 

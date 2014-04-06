@@ -2,6 +2,10 @@ Sequel.database_timezone = :utc
 
 class SessionRepository
 
+  CONNECTED = 'connected'
+  BEHIND = 'behind'
+  CAUGHT_UP = 'caught-up'
+
   attr_reader :table
   private :table
 
@@ -17,12 +21,16 @@ class SessionRepository
     table.delete
   end
 
-  def save(uuid, status: 'connected')
+  def update(uuid, status: nil)
+    table.where(uuid: uuid).update(updated_at: Time.now, status: status)
+  end
+
+  def touch(uuid)
     row = table[uuid: uuid]
     if row
-      table.where(uuid: uuid).update(updated_at: Time.now, status: status)
+      table.where(uuid: uuid).update(updated_at: Time.now)
     else
-      table.insert(uuid: uuid, updated_at: Time.now, status: status)
+      table.insert(uuid: uuid, updated_at: Time.now, status: CONNECTED)
     end
   end
 

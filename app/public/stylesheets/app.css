@@ -19,19 +19,12 @@ body {
 .content-wrap {
   margin: 0px;
   padding: 0px;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row;
-  flex-flow: row;
 }
 
 .content {
   margin: 4px;
   padding: 5px;
-  -webkit-flex: 3 3 100%;
-  flex: 3 3 100%;
-  -webkit-order: 0;
-  order: 0;
+  text-align: center;
 }
 
 .button {
@@ -50,31 +43,60 @@ body {
   color: black;
 }
 
+.button-ok {
+  color: #efefef;
+  background: #007300;
+}
+
+.button-ok:hover {
+  color: #efefef;
+  background: #005f00;
+}
+
+.button-not-ok {
+  color: #efefef;
+  background: #b30000;
+}
+
+.button-not-ok:hover {
+  color: #efefef;
+  background: #9b0000;
+}
+
 .student-circle {
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   text-align: center;
   margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .student-circle.is-connected {
-  background: #6b7686;
+  background: #ccc;
 }
 
 .student-circle.is-behind {
-  background: red;
+  background: #b30000;
 }
 
 .student-circle.is-caught-up {
-  background: green;
+  background: #007300;
 }
 
 .student-index {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 17px;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-size: 16px;
+  font-size: 18px;
   color: white;
+}
+
+.student-header.is-lost {
+  color: red;
+}
+
+.student-header.is-caught-up {
+  color: green;
 }
