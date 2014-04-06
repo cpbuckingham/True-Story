@@ -29,6 +29,11 @@ class ClickerApp < Sinatra::Application
     json active_sessions.map { |session| { id: session[:uuid], status: session[:status] } }
   end
 
+  post '/instructor/reset' do
+    sessions_repository.delete_all
+    ''
+  end
+
   get "/student" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repository.save(session[:uuid])

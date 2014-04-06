@@ -35,6 +35,10 @@ feature "Tracking student responses" do
 
     student_session.click_on "I'm caught-up"
     expect(instructor_session).to have_css(".student-circle.is-caught-up")
+
+    instructor_session.click_on "Reset"
+    expect(instructor_session).to have_no_css(".student-circle.is-caught-up")
+    expect(instructor_session).to have_no_css(".student-circle.is-behind")
   end
 
 end

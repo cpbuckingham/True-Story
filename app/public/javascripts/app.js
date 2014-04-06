@@ -31,11 +31,7 @@ InstructorApp = {
   }
 };
 
-StudentApp = {
-  setup: function () {
-    $(document).on('click', '[data-behavior=ajax-button]', function(){
-      $.post($(this).attr('href'));
-      return false;
-    });
-  }
-};
+$(document).on('click', 'a[data-remote=true]', function(){
+  $.post($(this).attr('href'));
+  return false;
+});

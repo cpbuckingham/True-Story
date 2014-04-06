@@ -13,6 +13,10 @@ class SessionRepository
     table[uuid: uuid]
   end
 
+  def delete_all
+    table.delete
+  end
+
   def save(uuid, status: 'connected')
     row = table[uuid: uuid]
     if row

@@ -1,10 +1,4 @@
 %h1 Welcome, grasshopper!
 
-%a(href="/student/you-lost-me" data-behavior="ajax-button") You lost me
-%a(href="/student/caught-up" data-behavior="ajax-button") I'm caught-up
-
-- content_for :javascripts do
-  :javascript
-    $(function(){
-      StudentApp.setup();
-    });
+%a(href="/student/you-lost-me" data-remote="true") You lost me
+%a(href="/student/caught-up" data-remote="true") I'm caught-up

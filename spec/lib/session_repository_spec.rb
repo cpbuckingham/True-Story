@@ -7,6 +7,18 @@ describe SessionRepository do
     DB[:sessions].delete
   end
 
+  describe "#delete_all" do
+    it "deletes all rows" do
+      uuid = SecureRandom.uuid
+      repository = SessionRepository.new(DB)
+
+      repository.save(uuid)
+      repository.delete_all
+
+      expect(repository.active_sessions.count).to eq(0)
+    end
+  end
+
   describe "#save" do
     it "creates a session row if one does not exist already" do
       uuid = SecureRandom.uuid
