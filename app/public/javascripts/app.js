@@ -1,7 +1,7 @@
 InstructorApp = {
   setup: function () {
     this.getResults();
-    setInterval(this.getResults, 2000);
+    setInterval(this.getResults, 1000);
   },
 
   getResults: function () {
@@ -14,6 +14,10 @@ InstructorApp = {
         switch (session.status) {
           case 'connected':
             className = 'is-connected';
+            break;
+          case 'behind':
+            className = 'is-behind';
+            break;
         }
         var $div = $('<div class="student-circle"></div>');
         $div.addClass(className);
@@ -26,6 +30,9 @@ InstructorApp = {
 
 StudentApp = {
   setup: function () {
-
+    $(document).on('click', '[data-behavior=ajax-button]', function(){
+      $.post($(this).attr('href'));
+      return false;
+    });
   }
 };

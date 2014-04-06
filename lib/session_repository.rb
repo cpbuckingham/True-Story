@@ -13,12 +13,12 @@ class SessionRepository
     table[uuid: uuid]
   end
 
-  def touch(uuid)
+  def save(uuid, status: 'connected')
     row = table[uuid: uuid]
     if row
-      table.where(uuid: uuid).update(updated_at: Time.now)
+      table.where(uuid: uuid).update(updated_at: Time.now, status: status)
     else
-      table.insert(uuid: uuid, updated_at: Time.now, status: 'connected')
+      table.insert(uuid: uuid, updated_at: Time.now, status: status)
     end
   end
 

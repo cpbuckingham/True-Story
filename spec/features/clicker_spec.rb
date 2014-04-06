@@ -29,6 +29,9 @@ feature "Tracking student responses" do
 
     instructor_session.visit instructor_session.current_path
     expect(instructor_session).to have_content("2")
+
+    other_student_session.click_on "You lost me"
+    expect(instructor_session).to have_css(".student-circle.is-behind")
   end
 
 end

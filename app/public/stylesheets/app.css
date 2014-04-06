@@ -63,6 +63,14 @@ body {
   background: #6b7686;
 }
 
+.student-circle.is-behind {
+  background: red;
+}
+
+.student-circle.is-caught-up {
+  background: green;
+}
+
 .student-index {
   display: inline-block;
   margin-top: 10px;
