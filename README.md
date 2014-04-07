@@ -12,6 +12,18 @@ An app that makes it easy to give feedback during a class.
 1. `rake db:migrate`
 1. `rackup`
 
+## Deployment
+
+1. `git push <heroku app name> master`
+1. `heroku run rake db:migrate -a <heroku app name>`
+1. `heroku restart -a <heroku app name>`
+
+Alternately, you can run migrations with:
+
+```bash
+heroku run 'sequel -m migrations $DATABASE_URL' --app <heroku app name>
+```
+
 ## Running Specs
 
 1. `rspec`
