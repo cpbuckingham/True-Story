@@ -1,5 +1,5 @@
 require_relative 'boot'
 
-db = Sequel.connect(ENV['DATABASE_URL'])
-ClickerApp.sessions_repository = SessionRepository.new(db)
+ClickerApp.sessions_repo = SessionRepo.new(PubSub.new)
+
 run ClickerApp

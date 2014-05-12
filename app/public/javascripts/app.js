@@ -1,16 +1,41 @@
 InstructorApp = {
-  setup: function () {
+  setup: function (pubsub) {
+    this.pubsub = pubsub;
     this.getResults();
-    setInterval($.proxy(this.getResults, this), 1000);
+    this.subscribe();
+    this.container = $("[data-behavior=student-container]");
+    this._students = {};
   },
 
   getResults: function () {
-    $.getJSON('/instructor.json', $.proxy(this.render, this));
+    var that = this;
+
+    $.getJSON('/instructor.json', function(data) {
+      that._students = data;
+      that.render();
+    });
   },
 
-  render: function (data) {
-    this.renderSummary(data);
-    this.renderDetails(data);
+  render: function () {
+    this.renderSummary(this.students());
+    this.renderDetails(this.students());
+  },
+
+  subscribe: function () {
+    var channel = this.pubsub.subscribe('default');
+
+    channel.bind('update', $.proxy(this.updateStudent, this));
+    channel.bind('delete_all', $.proxy(this.clearStudents, this));
+  },
+
+  updateStudent: function (data) {
+    this._students[data.uuid] = data;
+    this.render();
+  },
+
+  clearStudents: function() {
+    this._students = {};
+    this.render();
   },
 
   renderSummary: function (data) {
@@ -20,16 +45,16 @@ InstructorApp = {
   },
 
   renderDetails: function (data) {
-    var that = this;
-    var $container = $("[data-behavior=student-container]");
-    $container.empty();
-    $.each(data, function (index, session) {
-      var $span = $('<span class="student-index">' + index + '</span>');
-      var $div = $('<div class="student-circle"></div>');
-      var className = that.getClassName(session);
-      $div.addClass(className).append($span);
-      $container.append($div);
-    });
+    this.container.empty();
+    $.each(data, $.proxy(this.addStudent, this));
+  },
+
+  addStudent: function (index, session) {
+    var $span = $('<span class="student-index">' + index + '</span>');
+    var $div = $('<div class="student-circle"></div>');
+    var className = this.getClassName(session);
+    $div.addClass(className).append($span);
+    this.container.append($div);
   },
 
   getClassName: function (session) {
@@ -41,6 +66,10 @@ InstructorApp = {
       case 'caught-up':
         return 'is-caught-up';
     }
+  },
+
+  students: function() {
+    return _.values(this._students);
   }
 };
 

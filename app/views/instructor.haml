@@ -9,5 +9,7 @@
 - content_for :javascripts do
   :javascript
     $(function(){
-      InstructorApp.setup();
+      pusher = new Pusher('#{ENV["PUSHER_KEY"]}');
+
+      InstructorApp.setup(pusher);
     });

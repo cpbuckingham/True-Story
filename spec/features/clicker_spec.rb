@@ -3,8 +3,7 @@ require 'spec_helper'
 feature "Tracking student responses" do
 
   background do
-    DB[:sessions].delete
-    ClickerApp.sessions_repository = SessionRepository.new(DB)
+    ClickerApp.sessions_repo = SessionRepo.new(PubSub.new)
   end
 
   scenario "Instructor sees how many students are in the class" do

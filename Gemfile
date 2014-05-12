@@ -7,6 +7,7 @@ gem "sequel", "~> 4.9.0"
 gem "pg", "~> 0.17.1"
 gem "haml", "~> 4.0.5"
 gem "sinatra-contrib", "~> 1.4.2"
+gem "pusher"
 
 group :development, :test do
   gem "dotenv", "~> 0.10.0"

@@ -3,6 +3,7 @@
   %head
     %title Clicker App
     %link(href="/stylesheets/app.css" rel="stylesheet")
+
     %meta( name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0")
   %body
     %header.header
@@ -12,5 +13,7 @@
         = yield
 
     %script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    %script(src="//js.pusher.com/2.2/pusher.min.js")
+    %script(src="/javascripts/underscore-min.js")
     %script(src="/javascripts/app.js")
     = yield_content(:javascripts)
