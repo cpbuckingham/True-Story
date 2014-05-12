@@ -25,7 +25,7 @@ class ClickerApp < Sinatra::Application
 
   get '/instructor.json' do
     active_sessions = sessions_repository.active_sessions
-    json active_sessions.map { |session| { id: session[:uuid], status: session[:status] } }
+    json active_sessions.map { |session| {id: session[:uuid], status: session[:status]} }
   end
 
   post '/instructor/reset' do
@@ -36,7 +36,7 @@ class ClickerApp < Sinatra::Application
   get "/student" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repository.touch(session[:uuid])
-    haml :student, locals: { status: sessions_repository.find(session[:uuid])[:status] }
+    haml :student, locals: {status: sessions_repository.find(session[:uuid])[:status]}
   end
 
   post "/student/you-lost-me" do

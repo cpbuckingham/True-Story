@@ -47,16 +47,16 @@ InstructorApp = {
 StudentApp = {
   setup: function () {
     var $studentStatusDiv = $("[data-behavior=student-status]");
-    $(document).on("click", "[data-behavior=you-lost-me]", function(){
+    $(document).on("click", "[data-behavior=you-lost-me]", function () {
       $studentStatusDiv.addClass("is-lost").removeClass("is-caught-up");
     });
-    $(document).on("click", "[data-behavior=caught-up]", function(){
+    $(document).on("click", "[data-behavior=caught-up]", function () {
       $studentStatusDiv.addClass("is-caught-up").removeClass("is-lost");
     });
   }
 };
 
-$(document).on('click', 'a[data-remote=true]', function (e) {
+$(document).on('click', 'a[data-remote=true]', function () {
   $.post($(this).attr('href'));
   return false;
 });
