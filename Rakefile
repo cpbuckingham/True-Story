@@ -15,7 +15,9 @@ namespace :db do
   task :version => :sequel do
     version = if DB.tables.include?(:schema_info)
                 DB[:schema_info].first[:version]
-              end || 0
+              else
+                0
+              end
 
     puts "Schema Version: #{version}"
   end
