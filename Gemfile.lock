@@ -21,7 +21,6 @@ GEM
     multi_json (1.9.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    pg (0.17.1)
     pusher (0.12.0)
       httpclient (~> 2.3.0)
       multi_json (~> 1.0)
@@ -46,7 +45,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
-    sequel (4.9.0)
     signature (0.1.7)
     sinatra (1.4.4)
       rack (~> 1.4)
@@ -71,11 +69,9 @@ DEPENDENCIES
   capybara (~> 2.2.1)
   dotenv (~> 0.10.0)
   haml (~> 4.0.5)
-  pg (~> 0.17.1)
   pusher
   rake
   rspec (~> 2.14.1)
   selenium-webdriver (~> 2.41.0)
-  sequel (~> 4.9.0)
   sinatra (~> 1.4.4)
   sinatra-contrib (~> 1.4.2)
