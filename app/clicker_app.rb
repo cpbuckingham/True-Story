@@ -1,6 +1,6 @@
-require 'sinatra/base'
-require_relative '../lib/session_repo'
-require 'sinatra/content_for'
+require "sinatra/base"
+require_relative "../lib/session_repo"
+require "sinatra/content_for"
 require "sinatra/json"
 require "haml"
 
@@ -8,8 +8,14 @@ class ClickerApp < Sinatra::Application
   helpers Sinatra::ContentFor
   helpers Sinatra::JSON
 
-  class << self
-    attr_accessor :sessions_repo
+  def initialize(*_)
+    super
+
+    pubsub = PubSub.new
+    @sessions_repos = {
+      "boulder" => SessionRepo.new(pubsub, "boulder"),
+      "denver" => SessionRepo.new(pubsub, "denver")
+    }
   end
 
   enable :sessions
@@ -17,43 +23,49 @@ class ClickerApp < Sinatra::Application
   get "/" do
     haml :index
   end
+  
+  get "/:location" do
+    haml :select_role
+  end
 
-  get "/instructor" do
+  get "/:location/instructor" do
     haml :instructor
   end
 
-  get '/instructor.json' do
+  get "/:location/instructor.json" do
     active_sessions = sessions_repo.active_sessions
     json(active_sessions)
   end
 
-  post '/instructor/reset' do
+  post "/:location/instructor/reset" do
     sessions_repo.delete_all
-    ''
+    ""
   end
 
-  get "/student" do
+  get "/:location/student" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.join(session[:uuid])
     haml :student, locals: {status: sessions_repo.find(session[:uuid])[:status]}
   end
 
-  post "/student/you-lost-me" do
+  post "/:location/student/you-lost-me" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.update_status(session[:uuid], SessionRepo::BEHIND)
-    ''
+    ""
   end
 
-  post "/student/caught-up" do
+  post "/:location/student/caught-up" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.update_status(session[:uuid], SessionRepo::CAUGHT_UP)
-    ''
+    ""
   end
 
   private
 
+  attr_reader :sessions_repos
+
   def sessions_repo
-    self.class.sessions_repo
+    sessions_repos[params[:location]]
   end
 
 end

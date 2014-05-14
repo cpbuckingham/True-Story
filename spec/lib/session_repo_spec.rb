@@ -3,7 +3,7 @@ require "spec_helper"
 describe SessionRepo do
   let(:pubsub) { double(PubSub, publish: nil) }
   let(:storage) { {} }
-  let(:session_repo) { SessionRepo.new(pubsub, storage) }
+  let(:session_repo) { SessionRepo.new(pubsub, "some_location", storage) }
 
   describe "#join" do
     it "adds a session to storage with the correct attributes" do
@@ -17,7 +17,7 @@ describe SessionRepo do
     it "notifies pubsub of a touch event" do
       session_repo.join("1234")
 
-      expect(pubsub).to have_received(:publish).with("default",
+      expect(pubsub).to have_received(:publish).with("some_location",
                                                      "update",
                                                      {
                                                        uuid: "1234",
@@ -42,7 +42,7 @@ describe SessionRepo do
     it "publishes an update event to the pubsub" do
       session_repo.update_status("1234", SessionRepo::BEHIND)
 
-      expect(pubsub).to have_received(:publish).with("default",
+      expect(pubsub).to have_received(:publish).with("some_location",
                                                      "update",
                                                      {
                                                        uuid: "1234",
@@ -85,7 +85,7 @@ describe SessionRepo do
     it "publishes a delete_all event" do
       session_repo.delete_all
 
-      expect(pubsub).to have_received(:publish).with("default", "delete_all", {})
+      expect(pubsub).to have_received(:publish).with("some_location", "delete_all", {})
     end
   end
 end

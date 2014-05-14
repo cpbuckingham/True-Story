@@ -3,8 +3,9 @@ class SessionRepo
   CAUGHT_UP = "caught-up"
   UNKNOWN = "connected"
 
-  def initialize(pubsub, storage = {})
+  def initialize(pubsub, location, storage = {})
     @pubsub = pubsub
+    @location = location
     @storage = storage
   end
 
@@ -16,7 +17,7 @@ class SessionRepo
     session = find(uuid) || new_session(uuid)
     session[:status] = status
 
-    pubsub.publish("default", "update", session)
+    publish("update", session)
   end
 
   def find(uuid)
@@ -29,14 +30,18 @@ class SessionRepo
 
   def delete_all
     storage.clear
-    pubsub.publish("default", "delete_all", {})
+    publish("delete_all")
   end
 
   private
+
+  def publish(event, data = {})
+    pubsub.publish(location, event, data)
+  end
 
   def new_session(uuid)
     storage[uuid] = {uuid: uuid, status: UNKNOWN}
   end
 
-  attr_reader :pubsub, :storage
+  attr_reader :pubsub, :storage, :location
 end

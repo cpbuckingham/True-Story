@@ -1,8 +1,8 @@
 - status_class = {SessionRepo::BEHIND => 'is-lost', SessionRepo::CAUGHT_UP => 'is-caught-up'}[status]
 %h1.student-header{data: {behavior: "student-status"}, class: status_class} Welcome, grasshopper!
 
-%a.button.button-not-ok(href="/student/you-lost-me" data-remote="true" data-behavior="you-lost-me") You lost me
-%a.button.button-ok(href="/student/caught-up" data-remote="true" data-behavior="caught-up") I'm caught-up
+%a.button.button-not-ok(href="/#{params[:location]}/student/you-lost-me" data-remote="true" data-behavior="you-lost-me") You lost me
+%a.button.button-ok(href="/#{params[:location]}/student/caught-up" data-remote="true" data-behavior="caught-up") I'm caught-up
 
 - content_for :javascripts do
   :javascript

@@ -1,6 +1,7 @@
 InstructorApp = {
-  setup: function (pubsub) {
+  setup: function (pubsub, location) {
     this.pubsub = pubsub;
+    this.location = location;
     this.getResults();
     this.subscribe();
     this.container = $("[data-behavior=student-container]");
@@ -9,8 +10,9 @@ InstructorApp = {
 
   getResults: function () {
     var that = this;
+    var boot_url = '/' + this.location + '/instructor.json';
 
-    $.getJSON('/instructor.json', function(data) {
+    $.getJSON(boot_url, function(data) {
       that._students = data;
       that.render();
     });
@@ -22,7 +24,7 @@ InstructorApp = {
   },
 
   subscribe: function () {
-    var channel = this.pubsub.subscribe('default');
+    var channel = this.pubsub.subscribe(this.location);
 
     channel.bind('update', $.proxy(this.updateStudent, this));
     channel.bind('delete_all', $.proxy(this.clearStudents, this));
