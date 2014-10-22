@@ -14,7 +14,8 @@ class ClickerApp < Sinatra::Application
     pubsub = PubSub.new
     @sessions_repos = {
       "boulder" => SessionRepo.new(pubsub, "boulder"),
-      "denver" => SessionRepo.new(pubsub, "denver")
+      "denver" => SessionRepo.new(pubsub, "denver"),
+      "sf" => SessionRepo.new(pubsub, "sf")
     }
   end
 
