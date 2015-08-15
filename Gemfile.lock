@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://2.gems.org/
   specs:
     backports (3.6.0)
     capybara (2.2.1)
