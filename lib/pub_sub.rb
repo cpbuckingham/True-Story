@@ -1,6 +1,6 @@
 class PubSub
   def initialize
-    Pusher.url =  "http://#{ENV["PUSHER_KEY"]}:#{ENV["PUSHER_SECRET"]}@api.pusherapp.com/apps/#{ENV["PUSHER_APP"]}"
+    Pusher.url =  "http://ad19028119cbf87369e4:491d4c83af1dc4cb96eb@api.pusherapp.com/apps/136577"
   end
 
   def publish(channel, event, data)
