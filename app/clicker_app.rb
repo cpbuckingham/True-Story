@@ -13,9 +13,9 @@ class ClickerApp < Sinatra::Application
 
     pubsub = PubSub.new
     @sessions_repos = {
-      "boulder" => SessionRepo.new(pubsub, "boulder"),
-      "denver" => SessionRepo.new(pubsub, "denver"),
-      "sf" => SessionRepo.new(pubsub, "sf")
+      "rc_starters" => SessionRepo.new(pubsub, "rc_starters"),
+      "rc_fullfillers" => SessionRepo.new(pubsub, "rc_fullfillers"),
+      "rc_dashers" => SessionRepo.new(pubsub, "rc_dashers")
     }
   end
 
@@ -24,7 +24,7 @@ class ClickerApp < Sinatra::Application
   get "/" do
     haml :index
   end
-  
+
   get "/:location" do
     haml :select_role
   end
