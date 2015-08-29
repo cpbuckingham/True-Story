@@ -29,11 +29,11 @@ class ClickerApp < Sinatra::Application
     haml :select_role
   end
 
-  get "/:location/instructor" do
-    haml :instructor
+  get "/:location/scrum_master" do
+    haml:instructor
   end
 
-  get "/:location/instructor.json" do
+  get "/:location/scrum_master.json" do
     active_sessions = sessions_repo.active_sessions
     json(active_sessions)
   end
