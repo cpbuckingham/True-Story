@@ -44,7 +44,7 @@ InstructorApp = {
   renderSummary: function (data) {
     var $summary = $("[data-container=student-summary]");
     var ending = data.length == 1 ? '' : 's';
-    $summary.html(data.length + ' Developer' + ending);
+    $summary.html(data.length + ' Member' + ending);
   },
 
   renderDetails: function (data) {
