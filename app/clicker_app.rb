@@ -38,12 +38,12 @@ class ClickerApp < Sinatra::Application
     json(active_sessions)
   end
 
-  post "/:location/instructor/reset" do
+  post "/:location/scrum_master/reset" do
     sessions_repo.delete_all
     ""
   end
 
-  get "/:location/student" do
+  get "/:location/team_member" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.join(session[:uuid])
     haml :student, locals: {status: sessions_repo.find(session[:uuid])[:status]}
