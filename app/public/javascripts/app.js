@@ -10,7 +10,8 @@ InstructorApp = {
 
   getResults: function () {
     var that = this;
-    var boot_url = '/' + this.location + '/instructor.json';
+    var boot_url = '/' + this.location + '/scrum_master.json';
+
 
     $.getJSON(boot_url, function(data) {
       that._students = data;
