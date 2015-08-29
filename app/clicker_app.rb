@@ -49,17 +49,19 @@ class ClickerApp < Sinatra::Application
     haml :student, locals: {status: sessions_repo.find(session[:uuid])[:status]}
   end
 
-  post "/:location/student/you-lost-me" do
+  post "/:location/team_member/you-lost-me" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.update_status(session[:uuid], SessionRepo::BEHIND)
     ""
   end
 
-  post "/:location/student/caught-up" do
+  post "/:location/team_member/caught-up" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.update_status(session[:uuid], SessionRepo::CAUGHT_UP)
     ""
   end
+
+
 
   private
 
