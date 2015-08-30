@@ -16,6 +16,8 @@ class ClickerApp < Sinatra::Application
       "rc_starters" => SessionRepo.new(pubsub, "rc_starters"),
       "rc_fullfillers" => SessionRepo.new(pubsub, "rc_fullfillers"),
       "rc_dashers" => SessionRepo.new(pubsub, "rc_dashers")
+      "rc_embarcers" => SessionRepo.new(pubsub, "rc_embarcers")
+      "innovation_friday" => SessionRepo.new(pubsub, "innovation_friday")
     }
   end
 
