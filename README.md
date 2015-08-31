@@ -1,6 +1,5 @@
-# Clicker App
-
-An app that makes it easy to give feedback during a class.
+# True Story
+An app that makes it easy to get and give feedback during a retro, class, or presentation. 
 
 ## Local Setup
 
