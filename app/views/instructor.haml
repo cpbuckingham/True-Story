@@ -6,6 +6,79 @@
 
 %a.button(href="/#{params[:location]}/scrum_master/reset" data-remote="true") Reset
 
+%hr
+
+.container
+     %h2 Sample Agile Retrospective Questions
+     %p Here are 20 sample quesitons that will help your team address any concerns about their sprint and help improve future sprints
+     .table-responsive
+       %table.table
+         %thead
+           %tr
+             %th #
+             %th Question
+         %tbody
+           %tr
+             %td 1
+             %td Did  you feel this sprint went well?
+           %tr
+             %td 2
+             %td Did you feel challenged with the tasks assigned to you?
+           %tr
+             %td 3
+             %td Did you need assistance with your tasks during this sprint?
+           %tr
+             %td 4
+             %td Did you have a chance to use any new technologies to accomplish your tasks?
+           %tr
+             %td 5
+             %td Did you maintain or create any new documentation concerning your tasks?
+           %tr
+             %td 6
+             %td Did you feel all the tasks were assigned equally in order to maintain load balancing?
+           %tr
+             %td 7
+             %td Did your team have a least one morale event during this sprint?
+           %tr
+             %td 8
+             %td Did anyone sign up for training outside of their team work?
+           %tr
+             %td 9
+             %td Did anyone feel overwhelmed during this sprint?
+           %tr
+             %td 10
+             %td Did your teams junior or new hire get the attention they needed to be successful?
+           %tr
+             %td 11
+             %td Did anyone have any issues with any outside teams?
+           %tr
+             %td 12
+             %td Did anyone recognize their colleagues’ achievements to management during this sprint?
+           %tr
+             %td 13
+             %td Did our team feel proud about our work?
+           %tr
+             %td 14
+             %td Did our scrum master provide adequate support against our teams impediments?
+           %tr
+             %td 15
+             %td Did our scrum master assist in all communication efforts between our groups product manager?
+           %tr
+             %td 16
+             %td Did all the stories provide adequate explanation on the expectations of the tasks?
+           %tr
+             %td 17
+             %td Did the product manager provide enough support throughout the sprint?
+           %tr
+             %td 18
+             %td Did you learn anything new during this sprint about technology?
+           %tr
+             %td 19
+             %td Did you learn anything new during this sprint about AMEX?
+           %tr
+             %td 20
+             %td Does anyone have any recommendations they would like to share to improve performance in future sprints?
+
 - content_for :javascripts do
   :javascript
     $(function(){
