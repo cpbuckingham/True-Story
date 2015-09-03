@@ -27,12 +27,16 @@ class ClickerApp < Sinatra::Application
     haml :index
   end
 
+  get "/questions" do
+    haml :questions
+  end
+
   get "/:location" do
     haml :select_role
   end
 
   get "/:location/scrum_master" do
-    haml:instructor
+    haml :instructor
   end
 
   get "/:location/scrum_master.json" do
