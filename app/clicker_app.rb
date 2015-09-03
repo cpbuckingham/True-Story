@@ -13,11 +13,11 @@ class ClickerApp < Sinatra::Application
 
     pubsub = PubSub.new
     @sessions_repos = {
-      "rc_starters" => SessionRepo.new(pubsub, "rc_starters"),
-      "rc_fullfillers" => SessionRepo.new(pubsub, "rc_fullfillers"),
-      "rc_dashers" => SessionRepo.new(pubsub, "rc_dashers"),
-      "rc_embarcers" => SessionRepo.new(pubsub, "rc_embarcers"),
-      "innovation_friday" => SessionRepo.new(pubsub, "innovation_friday")
+      "room_1" => SessionRepo.new(pubsub, "room_1"),
+      "room_2" => SessionRepo.new(pubsub, "room_2"),
+      "room_3" => SessionRepo.new(pubsub, "room_3"),
+      "room_4" => SessionRepo.new(pubsub, "room_4"),
+      "room_5" => SessionRepo.new(pubsub, "room_5")
     }
   end
 
@@ -25,10 +25,6 @@ class ClickerApp < Sinatra::Application
 
   get "/" do
     haml :index
-  end
-
-  get "/questions" do
-    haml :questions
   end
 
   get "/:location" do
@@ -67,6 +63,9 @@ class ClickerApp < Sinatra::Application
     ""
   end
 
+  get "/questions" do
+    haml :questions
+  end
 
 
   private
