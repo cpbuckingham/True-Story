@@ -5,12 +5,66 @@
 %div{data: {behavior: 'student-container'}}
 
 %a.button(href="/#{params[:location]}/scrum_master/reset" data-remote="true") Reset
-%a.button(href="/questions" target="_blank") Questions
+%input{:type => "button", :value => "Next Question"}
+
+%hr
+
+.content_div
+  %li Did  you feel this sprint went well?
+.content_div
+  %li Did you feel challenged with the tasks assigned to you?
+.content_div
+  %li Did you need assistance with your tasks during this sprint?
+.content_div
+  %li Did you have a chance to use any new technologies to accomplish your tasks?
+.content_div
+  %li Did you maintain or create any new documentation concerning your tasks?
+.content_div
+  %li Did you feel all the tasks were assigned equally in order to maintain load balancing?
+.content_div
+  %li Did your team have a least one morale event during this sprint?
+.content_div
+  %li Did anyone sign up for training outside of their team work?
+.content_div
+  %li Did anyone feel overwhelmed during this sprint?
+.content_div
+  %li Did your teams junior or new hire get the attention they needed to be successful?
+.content_div
+  %li Did anyone have any issues with any outside teams?
+.content_div
+  %li Did anyone recognize their colleagues’ achievements to management during this sprint?
+.content_div
+  %li Did our team feel proud about our work?
+.content_div
+  %li Did our scrum master provide adequate support against our teams impediments?
+.content_div
+  %li Did our scrum master assist in all communication efforts between our groups product manager?
+.content_div
+  %li Did all the stories provide adequate explanation on the expectations of the tasks?
+.content_div
+  %li Did the product manager provide enough support throughout the sprint?
+.content_div
+  %li Did you learn anything new during this sprint about technology?
+.content_div
+  %li Did you learn anything new during this sprint about AMEX?
+.content_div
+  %li Does anyone have any recommendations they would like to share to improve performance in future sprints?
 
 #comments
 
 - content_for :javascripts do
   :javascript
+
+  var $divs = $("div.content_div").hide(),
+  i = 0;
+  $divs.eq(i).show();
+
+  $("input").click(function() {
+  $divs.eq(i).hide();
+  i = (i+1) % $divs.length;
+  $divs.eq(i).show();
+
+});
     $(function(){
       pusher = new Pusher('ad19028119cbf87369e4');
 
