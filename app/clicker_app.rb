@@ -63,10 +63,6 @@ class ClickerApp < Sinatra::Application
     ""
   end
 
-  # get "/questions" do
-  #   haml :questions
-  # end
-
 
   private
 
