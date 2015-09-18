@@ -20,6 +20,13 @@ class SessionRepo
     publish("update", session)
   end
 
+  def update_comment(uuid, comment)
+    session = find(uuid) || new_session(uuid)
+    session[:comment] = comment
+
+    publish("update", session)
+  end
+
   def find(uuid)
     storage[uuid]
   end
