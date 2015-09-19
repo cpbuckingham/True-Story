@@ -63,6 +63,12 @@ class ClickerApp < Sinatra::Application
     ""
   end
 
+  post "/:location/team_member/comment" do
+    session[:uuid] = SecureRandom.uuid unless session[:uuid]
+    sessions_repo.update_comment(session[:uuid], session[:uuid][:comment])
+    ""
+  end
+
 
   private
 
