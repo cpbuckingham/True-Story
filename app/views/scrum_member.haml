@@ -9,7 +9,6 @@
 %h5 Comments
 %form{:action => "scrum_master.haml", :method => "post"}
 %input#comment{:size => "30x10", :type => "text"}/
-%input#create{:type => "submit", :value => "Submit"}/
 %a.button(href="/#{params[:location]}/team_member/comment") Submit
 
 
@@ -19,10 +18,3 @@
     $(function(){
       StudentApp.setup();
     });
-    $('#comments').append('<p></p>');
-    $('#create').on("click", function () {
-        addComment($('input').val());
-    });
-    var addComment = function (cclomment) {
-    $('p').append('<li>' + comment + '</li>');
-    };
