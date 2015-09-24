@@ -7,11 +7,9 @@
 %br
 %hr
 %h5 Comments
-%form{:action => "scrum_master.haml", :method => "post"}
-%input#comment{:size => "30x10", :type => "text"}/
-%a.button(href="/#{params[:location]}/team_member/comment") Submit
-
-
+%form{:action => "/#{params[:location]}/team_member", :method => "post"}
+  %input#comment{:size => "30x10", :type => "text", :name => "comment"}/
+  %input{type: "Submit", class: "button"}
 
 - content_for :javascripts do
   :javascript
