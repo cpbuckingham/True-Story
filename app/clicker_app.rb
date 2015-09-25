@@ -48,7 +48,7 @@ class ClickerApp < Sinatra::Application
   get "/:location/team_member" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.join(session[:uuid])
-    haml :scrum_member, locals: {status: sessions_repo.find(session[:uuid])[:status]}
+    haml :scrum_member, locals: {status: sessions_repo.find(session[:uuid])[:status], comment: sessions_repo.find(session[:uuid])[:comment]}
   end
 
   post "/:location/team_member/you-lost-me" do
@@ -63,10 +63,10 @@ class ClickerApp < Sinatra::Application
     ""
   end
 
-  post "/:location/team_member/comment" do
+  post "/:location/team_member" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
-    sessions_repo.update_comment(session[:uuid], session[:uuid][:comment])
-    ""
+    sessions_repo.update_comment(session[:uuid], params[:comment])
+    redirect "/#{params[:location]}/team_member"
   end
 
 
