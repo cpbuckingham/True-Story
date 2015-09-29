@@ -100,3 +100,15 @@ body {
 .student-header.is-caught-up {
   color: green;
 }
+
+#comment-container: {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
