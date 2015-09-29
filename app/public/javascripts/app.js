@@ -5,6 +5,7 @@ InstructorApp = {
     this.getResults();
     this.subscribe();
     this.container = $("[data-behavior=student-container]");
+    this.commentContainer = $('#comments');
     this._students = {};
   },
 
@@ -58,6 +59,14 @@ InstructorApp = {
     var className = this.getClassName(session);
     $div.addClass(className).append($span);
     this.container.append($div);
+    this.addComment(session.comment);
+  },
+
+  addComment: function (comment) {
+    if (comment.length > 0) {
+      var $li = $('<li>' + comment + '<li>');
+      this.commentContainer.append($li);
+    }
   },
 
   getClassName: function (session) {
