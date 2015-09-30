@@ -66,7 +66,8 @@ class ClickerApp < Sinatra::Application
   post "/:location/team_member" do
     session[:uuid] = SecureRandom.uuid unless session[:uuid]
     sessions_repo.update_comment(session[:uuid], params[:comment])
-    redirect "/#{params[:location]}/team_member"
+    haml :scrum_member, locals: {status: sessions_repo.find(session[:uuid])[:status], comment: sessions_repo.find(session[:uuid])[:comment]}
+
   end
 
 
@@ -77,5 +78,6 @@ class ClickerApp < Sinatra::Application
   def sessions_repo
     sessions_repos[params[:location]]
   end
+
 
 end

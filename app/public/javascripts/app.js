@@ -39,6 +39,7 @@ InstructorApp = {
 
   clearStudents: function() {
     this._students = {};
+    this.clearComment();
     this.render();
   },
 
@@ -50,7 +51,9 @@ InstructorApp = {
 
   renderDetails: function (data) {
     this.container.empty();
+    this.commentContainer.empty();
     $.each(data, $.proxy(this.addStudent, this));
+    $.each(data, $.proxy(this.addComment, this));
   },
 
   addStudent: function (index, session) {
@@ -59,16 +62,18 @@ InstructorApp = {
     var className = this.getClassName(session);
     $div.addClass(className).append($span);
     this.container.append($div);
-    this.addComment(session.comment);
   },
 
-  addComment: function (comment) {
-    if (comment.length > 0) {
-      var $li = $('<li>' + comment + '<li>');
+  addComment: function (index, session) {
+    if (typeof session.comment !== 'undefined') {
+      var $li = $('<li>' + session.comment + '<li>');
       this.commentContainer.append($li);
     }
   },
 
+  clearComment: function() {
+    $('#comments').html('');
+  },
   getClassName: function (session) {
     switch (session.status) {
       case 'connected':
