@@ -3,7 +3,8 @@
 %p(data-container="student-summary")
 
 %div{data: {behavior: 'student-container'}}
-
+%button#hide Hide
+%button#show Show
 %div#comment-container
   %ul#comments
 
@@ -54,6 +55,13 @@
 
 - content_for :javascripts do
   :javascript
+
+    $("#hide").click(function(){
+          $("ul").hide();
+      });
+    $("#show").click(function(){
+          $("ul").show();
+      });
 
     var $divs = $("div.content_div").hide(),
     i = 0;
