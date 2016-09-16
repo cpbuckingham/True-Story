@@ -4,8 +4,6 @@
 
 %div{data: {behavior: 'student-container'}}
 
-%div#comment-container
-  %ul#comments
 
 %a.button(href="/#{params[:location]}/scrum_master/reset" data-remote="true") Reset
 %input{:type => "button", :value => "Next Question"}
@@ -53,7 +51,9 @@
 
 %hr
 %h5 Comments
-
+%div#comment-container
+  %ul#comments
+  
 - content_for :javascripts do
   :javascript
     var $divs = $("div.content_div").hide(),
