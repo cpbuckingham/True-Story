@@ -1,12 +1,13 @@
 source "https://rubygems.org"
 
-ruby '2.2.2'
+ruby '2.0.0'
 
 gem "sinatra", "~> 1.4.4"
 gem "rake"
 gem "haml", "~> 4.0.5"
 gem "sinatra-contrib", "~> 1.4.2"
 gem "pusher"
+gem 'jspdf-rails'
 
 group :development, :test do
   gem "dotenv", "~> 0.10.0"
