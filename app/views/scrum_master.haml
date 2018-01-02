@@ -8,7 +8,7 @@
 %div#comment-container
   %ul#comments
 
-%a.button(href="/#{params[:location]}/scrum_master/reset" id="cmd" data-remote="true") Next Question
+%a.button(href="/#{params[:location]}/scrum_master/reset" data-remote="true") Reset
 %input{:type => "button", :value => "Next Question"}
 
 %hr
@@ -36,7 +36,7 @@
 .content_div
   %li Did anyone have any issues with any outside teams?
 .content_div
-  %li Did anyone recognize their colleagues achievements to management during this sprint?
+  %li Did anyone recognize their colleagues’ achievements to management during this sprint?
 .content_div
   %li Did our team feel proud about our work?
 .content_div
@@ -51,7 +51,7 @@
   %li Did you learn anything new during this sprint about technology?
 .content_div
   %li Does anyone have any recommendations they would like to share to improve performance in future sprints?
-%div#editor
+
 
 - content_for :javascripts do
   :javascript
@@ -64,26 +64,13 @@
 
     var $divs = $("div.content_div").hide(),
     i = 0;
-    $divs.eq(i).show().css('color', 'red');
+    $divs.eq(i).show();
 
-    $("#cmd").click(function() {
-    doc.fromHTML($('article').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('true-story.pdf');
-      $divs.eq(i).hide().css('color', 'black');
+    $("input").click(function() {
+      $divs.eq(i).hide();
       i = (i+1) % $divs.length;
-      $divs.eq(i).show().css('color', 'red');
+      $divs.eq(i).show();
     });
-
-    var doc = new jsPDF();
-    var specialElementHandlers ={
-    '#editor': function (element, renderer){
-    return true;
-    }
-    };
-
     $(function(){
       pusher = new Pusher('ad19028119cbf87369e4');
 
