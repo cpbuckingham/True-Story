@@ -52,6 +52,9 @@
 
 - content_for :javascripts do
   :javascript
+    var $divs = $("div.content_div").hide(),
+    i = 0;
+    $divs.eq(i).show();
     $(function(){
       pusher = new Pusher('ad19028119cbf87369e4');
 

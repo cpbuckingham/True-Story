@@ -4,10 +4,6 @@
 %a.button.button-not-ok(href="/#{params[:location]}/team_member/you-lost-me" data-remote="true" data-behavior="you-lost-me") I disagree
 %a.button.button-ok(href="/#{params[:location]}/team_member/caught-up" data-remote="true" data-behavior="caught-up") I agree
 
-%br
-%hr
-%h5 Comment
-%form{:action => "/#{params[:location]}/team_member", :method => "post", data: {remote: true}}
 
 - content_for :javascripts do
   :javascript
