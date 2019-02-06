@@ -60,11 +60,7 @@
     i = 0;
     $divs.eq(i).show();
 
-    $("input").click(function() {
-      $divs.eq(i).hide();
-      i = (i+1) % $divs.length;
-      $divs.eq(i).show();
-    });
+
     $(function(){
       pusher = new Pusher('ad19028119cbf87369e4');
 
