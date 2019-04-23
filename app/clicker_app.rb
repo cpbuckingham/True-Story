@@ -31,6 +31,10 @@ class ClickerApp < Sinatra::Application
     haml :select_role
   end
 
+  get "/help" do
+    haml :help
+  end
+
   get "/:location/scrum_master" do
     haml :scrum_master
   end

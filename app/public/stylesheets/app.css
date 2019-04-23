@@ -16,6 +16,12 @@ body {
   text-decoration: none;
 }
 
+.help {
+  color: #efefef;
+  text-decoration: none;
+  text-align: right;
+}
+
 .content-wrap {
   margin: 0px;
   padding: 0px;
