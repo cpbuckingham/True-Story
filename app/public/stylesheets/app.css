@@ -19,7 +19,7 @@ body {
 .help {
   color: #efefef;
   text-decoration: none;
-  text-align: right;
+  float: right;
 }
 
 .content-wrap {
