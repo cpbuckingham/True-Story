@@ -1,13 +1,12 @@
 source "https://rubygems.org"
 
-ruby '3.0.2'
+ruby '2.6.8'
 
 gem "sinatra", "~> 1.4.4"
 gem "rake"
 gem "haml", "~> 4.0.5"
 gem "sinatra-contrib", "~> 1.4.2"
 gem "pusher"
-gem "puma"
 
 group :development, :test do
   gem "dotenv", "~> 0.10.0"
