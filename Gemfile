@@ -4,7 +4,7 @@ ruby '2.6.8'
 
 gem "sinatra", "~> 1.4.4"
 gem "rake"
-gem "haml", "~> 4.0.5"
+gem "haml", "~> 5.0.0"
 gem "sinatra-contrib", "~> 1.4.2"
 gem "pusher"
 
